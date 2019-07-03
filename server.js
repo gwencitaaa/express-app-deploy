@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config()
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true }, (err) => {
@@ -15,6 +16,7 @@ const port = process.env.PORT || 5000
 const User = require('./models/User')
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/hello', (req, res) => {
   res.send({
